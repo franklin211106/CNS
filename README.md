@@ -27,8 +27,51 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+# PROGRAM :-
+# Caesar Cipher encryption function
+def caesar_encrypt(text, shift):
+    encrypted_text = ""
+    
+    # Traverse the text and encrypt each character
+    for char in text:
+        if char.isalpha():
+            # Get the ASCII code of the character
+            start = 65 if char.isupper() else 97
+            encrypted_text += chr((ord(char) - start + shift) % 26 + start)
+        else:
+            encrypted_text += char  # Non-alphabet characters are not encrypted
+    
+    return encrypted_text
 
+# Caesar Cipher decryption function
+def caesar_decrypt(text, shift):
+    decrypted_text = ""
+    
+    # Traverse the text and decrypt each character
+    for char in text:
+        if char.isalpha():
+            # Get the ASCII code of the character
+            start = 65 if char.isupper() else 97
+            decrypted_text += chr((ord(char) - start - shift) % 26 + start)
+        else:
+            decrypted_text += char  # Non-alphabet characters are not decrypted
+    
+    return decrypted_text
+
+# Test the Caesar Cipher
+if _name_ == "_main_":
+    text = input("Enter the text: ")
+    shift = int(input("Enter the shift value: "))
+
+    # Encrypt the text
+    encrypted_text = caesar_encrypt(text, shift)
+    print(f"Encrypted Text: {encrypted_text}")
+    
+    # Decrypt the text
+    decrypted_text = caesar_decrypt(encrypted_text, shift)
+    print(f"Decrypted Text: {decrypted_text}")
 
 
 OUTPUT :-
+![WhatsApp Image 2025-03-20 at 08 59 10_b4a55a05](https://github.com/user-attachments/assets/70658463-28d1-47d2-932f-ca017841ae12)
+
